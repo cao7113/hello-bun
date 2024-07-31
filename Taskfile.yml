@@ -1,0 +1,26 @@
+# https://taskfile.dev/usage/
+version: "3"
+tasks:
+  hot-run: bun --hot run/hello.js
+  build: bun build ./index.ts --outdir ./build
+
+  install: bun install
+  run: bun run dev
+
+  bench-hello: hyperfine "node run/hello.js" "bun run/hello.js" --warmup 3
+  bench-loop: hyperfine "node run/loop.js" "bun run/loop.js" --warmup 3
+
+  install-hyperfine: brew install hyperfine
+
+  mk-hello-bun: bun init -y
+
+  ## Setup bun
+  install-bun: curl -fsSL https://bun.sh/install | bash
+  bun-version: bun -v
+  # bun init  // (npm): npm init
+  # bun create usernameGithub/repo ./directory
+  # bun create react [appName] // (npm): npx create-react-app my-app
+  # bun run start // (npm) : npm run start
+  # bun create next [appName]  // (npm) : npx create-next-app@latest nextjs-blog
+  # bun run dev  // (npm) : npm run dev
+  # bun install [package-name] // (npm) : npm install [package-name]
