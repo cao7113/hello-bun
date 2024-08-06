@@ -1,3 +1,5 @@
+// bun install react
+
 function Component(props: {message: string}) {
   return (
     <body>

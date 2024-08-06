@@ -1,5 +1,3 @@
-// console.log("Hello via Bun!");
-
 import figlet from "figlet";
 
 const server = Bun.serve({
