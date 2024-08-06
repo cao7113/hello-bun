@@ -1,26 +1,40 @@
 # https://taskfile.dev/usage/
 version: "3"
 tasks:
-  hot-run: bun --hot run/hello.js
+  dev: bun dev
+  hot-hello: bun --hot run/hello.ts
+  # bun --watch run index.tsx
+  # bun --print Bun.version
+  # bun --print Bun.env
+  # bun --print process.env
+  show-yarn-lock: bun bun.lockb
   build: bun build ./index.ts --outdir ./build
+  # https://bun.sh/docs/bundler/executables
+  # bun build ./cli.ts --compile --outfile mycli
 
-  install: bun install
-  run: bun run dev
+  ## use bun instead of nodejs
+  # By default, Bun respects this shebang and executes the script with node. However, you can override this behavior with the --bun flag. For Node.js-based CLIs, this will run the CLI with Bun instead of Node.js.
+  # bun run --bun vite
 
-  bench-hello: hyperfine "node run/hello.js" "bun run/hello.js" --warmup 3
+  ## Benchmarking
+  bench: hyperfine "node run/hello.js" "bun run/hello.js" --warmup 3
   bench-loop: hyperfine "node run/loop.js" "bun run/loop.js" --warmup 3
-
   install-hyperfine: brew install hyperfine
 
+  ## Setup bun https://bun.sh/docs/installation
   mk-hello-bun: bun init -y
+  install: bun install
 
-  ## Setup bun
-  install-bun: curl -fsSL https://bun.sh/install | bash
-  bun-version: bun -v
+  install-bun: |
+    curl -fsSL https://bun.sh/install | bash # -s "bun-v1.0.0"
+    .bun/bin/bun -v
+  brew-install-bun: brew install oven-sh/bun/bun
+
+  ## Commands
   # bun init  // (npm): npm init
-  # bun create usernameGithub/repo ./directory
   # bun create react [appName] // (npm): npx create-react-app my-app
-  # bun run start // (npm) : npm run start
   # bun create next [appName]  // (npm) : npx create-next-app@latest nextjs-blog
+  # bun create usernameGithub/repo ./directory
+  # bun run start // (npm) : npm run start
   # bun run dev  // (npm) : npm run dev
   # bun install [package-name] // (npm) : npm install [package-name]

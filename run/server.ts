@@ -1,6 +1,8 @@
-Bun.serve({
+const server = Bun.serve({
   port: 3000,
   fetch(request) {
-    return new Response("Hello from Bun!");
+    return new Response("Welcome to Bun!");
   },
 });
+
+console.log(`Listening on http://localhost:${server.port}`);
