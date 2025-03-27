@@ -1,0 +1,5 @@
+# https://taskfile.dev/usage/
+version: '3'
+tasks:
+  default: task test
+  test: bun test ./test/**.test.ts
