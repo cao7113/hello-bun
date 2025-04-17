@@ -4,7 +4,7 @@ version = "0.1.0"
 
 # scripts to run before `bun run`-ing a file or script
 # register plugins by adding them to this list
-preload = ["./try/yaml-loader.ts"]
+preload = ["./src/yaml-loader.ts"]
 
 # [scripts]
 # start = "bun run run/async-main.ts"

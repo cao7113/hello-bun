@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 // 定义组件的 Props 接口
-interface HelloComponentProps {
+interface HelloCompProps {
   initialName?: string;
   className?: string;
 }
 
 // 创建 Hello 组件
-export function HelloComponent({ initialName = 'World', className = '' }: HelloComponentProps) {
+export function HelloComp({ initialName = 'World', className = '' }: HelloCompProps) {
   // 使用 useState hook 管理状态
   const [name, setName] = useState(initialName);
   const [count, setCount] = useState(0);
@@ -46,4 +46,4 @@ export function HelloComponent({ initialName = 'World', className = '' }: HelloC
   );
 }
 
-export default HelloComponent;
+export default HelloComp;
