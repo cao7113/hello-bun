@@ -23,6 +23,7 @@ tasks:
   # bun install react react-dom
   # bun install -d @types/react @types/react-dom
   # bun build ./index.html --minify --outdir=dist
+  
   mk-hello-comp: |
     # $ bun create react-app cra1
     # create-react-app is deprecated.
