@@ -23,7 +23,7 @@ export function HelloComponent({ initialName = 'World', className = '' }: HelloC
   };
 
   return (
-    <div className={`hello-component ${className}`}>
+    <div className={`hello ${className}`}>
       <h1>Hello, {name}!</h1>
       <p>You clicked the button {count} times</p>
       
