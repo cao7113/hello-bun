@@ -24,7 +24,22 @@ tasks:
   # bun install -d @types/react @types/react-dom
   # bun build ./index.html --minify --outdir=dist
   mk-hello-comp: |
-    bun create src/hello-component.tsx
+    bun create react src/MyComponent.tsx
+    
+    # $ bun create ./MyComponent.tsx
+    # error: "./MyComponent.tsx" was not found on GitHub. Here are templates you can use:
+    # bun create apollo-server MyComponent.tsx
+    # bun create bun-bakery MyComponent.tsx
+    # bun create discord-interactions MyComponent.tsx
+    # bun create elysia MyComponent.tsx
+    # bun create elysia-buchta MyComponent.tsx
+    # bun create hono MyComponent.tsx
+    # bun create kingworld MyComponent.tsx
+    # bun create react MyComponent.tsx
+    # bun create react-ssr MyComponent.tsx
+    # bun create stric MyComponent.tsx
+    # bun create svelte-kit MyComponent.tsx
+    # bun create websi MyComponent.tsx
   
   build-hello-cli: |
     bun build ./run/hello-cli.ts --compile --outfile build/hello-cli
