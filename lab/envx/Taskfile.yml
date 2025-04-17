@@ -1,0 +1,29 @@
+# https://taskfile.dev/usage/
+version: '3'
+tasks:
+  default: |
+    dotenvx run --ignore=MISSING_ENV_FILE -- bun index.ts
+
+  # Note: bun also support .env file, conflict with dotenvx
+  # https://bun.sh/docs/runtime/env#dotenv
+  envx: |
+    # echo "HELLO=Test" > .env.test
+    # echo "console.log('Hello ' + process.env.HELLO)" > index.js
+    echo "# .env.test content"
+    cat .env.test
+    echo "# without dotenvx"
+    bun env-test.js
+    echo "# with dotenvx"
+    dotenvx run -f .env.test -- bun env-test.js
+
+  env-encrypt: |
+    # echo "HELLO=Test" > .env.test.crypt
+    dotenvx set HELLO "test (encrypted)" -f .env.test.crypt
+    # dotenvx run -f .env.test.crypt -- bun env-test.js
+    # DOTENV_PRIVATE_KEY_TEST_CRYPT='xxx' dotenvx get HELLO
+
+  # https://dotenvx.com/docs/quickstart
+  # npm install @dotenvx/dotenvx -g
+  # bun add @dotenvx/dotenvx
+  install-dotenvx: brew install dotenvx/brew/dotenvx
+

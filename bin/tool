@@ -1,0 +1,31 @@
+#! /usr/bin/env bun
+
+import { Command } from "commander";
+import { version } from "../package.json";
+
+// https://github.com/tj/commander.js?tab=readme-ov-file#commanderjs
+const program = new Command()
+  .name("tool")
+  .description("Tool CLI")
+  .version(version);
+
+program
+  .command("rand-uuid")
+  .alias("uuid")
+  .description("Gen random uuid")
+  .action(async () => {
+    const uuid = crypto.randomUUID().replaceAll("-", "");
+    console.log(uuid);
+  });
+
+program
+  .command("hash-passsword")
+  .alias("hash")
+  .description("Hash a password")
+  .argument("<password>", "Password to hash")
+  .action(async (password) => {
+    const hash = await Bun.password.hash(password, "argon2d");
+    console.log(hash);
+  });
+
+program.parse();

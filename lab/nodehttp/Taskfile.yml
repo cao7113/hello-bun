@@ -1,0 +1,8 @@
+# https://taskfile.dev/usage/
+version: '3'
+tasks:
+  # http://localhost:3000/
+  default: bun run index.ts
+
+  setup: |
+    bun add -D @types/node

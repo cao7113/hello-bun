@@ -1,0 +1,13 @@
+{
+  "name": "hello-jest",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "jest": "^29.7.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

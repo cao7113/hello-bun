@@ -1,11 +1,30 @@
 {
   "name": "hello-bun",
-  "module": "index.ts",
+  "version": "0.1.0",
   "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest"
+  "module": "src/index.ts",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts"
   },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/lodash": "^4.17.16",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {},
+  "dependencies": {
+    "bun-plugin-tailwind": "^0.0.15",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.4",
+    "zod": "^3.24.2",
+    "commander": "^13.1.0",
+    "got": "^14.4.7",
+    "ky": "^1.8.0"
   }
 }

@@ -1,0 +1,9 @@
+# https://taskfile.dev/usage/
+version: "3"
+tasks:
+  default: bun --hot --watch run index.ts
+  test: bun test ./test/**
+
+  setup: |
+    bun add figlet
+    bun dadd -d @types/figlet

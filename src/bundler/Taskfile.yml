@@ -1,0 +1,22 @@
+# https://taskfile.dev/usage/
+version: '3'
+tasks:
+  # https://bun.sh/docs/bundler#basic-example
+  build: bun build ./index.tsx --outdir=build --watch
+  run: |
+    bunx serve
+    # task: [serve] bunx serve
+
+    # ┌──────────────────────────────────────────┐
+    # │                                          │
+    # │   Serving!                               │
+    # │                                          │
+    # │   - Local:    http://localhost:3000      │
+    # │   - Network:  http://192.168.1.30:3000   │
+    # │                                          │
+    # │   Copied local address to clipboard!     │
+    # │                                          │
+    # └──────────────────────────────────────────┘
+
+
+  build-many: bun build ./index.tsx ./index2.tsx --outdir=build

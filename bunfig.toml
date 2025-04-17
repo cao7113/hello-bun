@@ -1,0 +1,13 @@
+name = "hello-bun"
+version = "0.1.0"
+# entry = "run/async-main.ts"
+
+# scripts to run before `bun run`-ing a file or script
+# register plugins by adding them to this list
+preload = ["./try/yaml-loader.ts"]
+
+# [scripts]
+# start = "bun run run/async-main.ts"
+
+[serve.static]
+plugins = ["bun-plugin-tailwind"]

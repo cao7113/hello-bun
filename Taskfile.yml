@@ -1,26 +1,84 @@
 # https://taskfile.dev/usage/
 version: "3"
 tasks:
-  hot-run: bun --hot run/hello.js
+  default: task test
+  dev: bun run dev
+  test: |
+    bun test ./test/*.test.ts
+    bun test ./test/**/*.test.ts
+
+  ## Env
+  # https://bun.sh/docs/runtime/env#setting-environment-variables
+  # BUN_CONFIG_MAX_HTTP_REQUESTS=256 bun xxx
+  env-hi: bun -p Bun.env.HELLO
+  # bun run/env.ts
+  # https://vite.dev/guide/env-and-mode.html#env-fileso
+  # bun --print Bun.env
+  # bun --print process.env
+  # bun -e "console.log(process.env)"
+  
+  build-hello-cli: |
+    bun build ./run/hello-cli.ts --compile --outfile build/hello-cli
+    # run by: build/hello-cli
+  
+  ## Html & Jsx
+  # bun --only-missing install tailwindcss bun-plugin-tailwind
+  # bun install --dev bun-plugin-tailwind
+  # bun install react react-dom
+  # bun install -d @types/react @types/react-dom
+  # bun build ./index.html --minify --outdir=dist
+
+  ## run scripts
+  # bun index.ts
+  # bun --watch run index.ts
   build: bun build ./index.ts --outdir ./build
+  # https://bun.sh/docs/bundler/executables
+  # bun build ./cli.ts --compile --outfile mycli
 
-  install: bun install
-  run: bun run dev
+  ## use bun instead of nodejs
+  # By default, Bun respects this shebang and executes the script with node. However, you can override this behavior with the --bun flag. For Node.js-based CLIs, this will run the CLI with Bun instead of Node.js.
+  # bun run --bun vite
 
-  bench-hello: hyperfine "node run/hello.js" "bun run/hello.js" --warmup 3
+  # bun run --filter "se*" --if-present test
+  # npm run test --workspaces --if-present
+
+  ## Benchmarking
+  bench: hyperfine "node run/hello.js" "bun run/hello.js" --warmup 3
   bench-loop: hyperfine "node run/loop.js" "bun run/loop.js" --warmup 3
-
   install-hyperfine: brew install hyperfine
 
-  mk-hello-bun: bun init -y
+  ## Templates
+  init-templates: |
+    dir=templates
+    rm -fr $dir
+    mkdir -p $dir
+    cd $dir
+    bun init blank
+    # bun init react
 
-  ## Setup bun
-  install-bun: curl -fsSL https://bun.sh/install | bash
-  bun-version: bun -v
+  setup: bun install
+  up: |
+    bun upgrade
+    bun --version
+    echo https://bun.sh/blog
+
+  ## Setup bun 
+  # https://bun.sh/docs/installation
+  # https://bun.sh/docs/installation#macos-and-linux
+  install-bun: |
+    # prefer this
+    curl -fsSL https://bun.sh/install | bash # -s "bun-v1.0.0"
+  
+  # brew-install-bun: |
+  #   # brew tap oven-sh/bun
+  #   brew install oven-sh/bun/bun
+
+  ## Commands and npm commands
   # bun init  // (npm): npm init
-  # bun create usernameGithub/repo ./directory
   # bun create react [appName] // (npm): npx create-react-app my-app
-  # bun run start // (npm) : npm run start
   # bun create next [appName]  // (npm) : npx create-next-app@latest nextjs-blog
+  # bun create usernameGithub/repo ./directory
+  # bun run start // (npm) : npm run start
   # bun run dev  // (npm) : npm run dev
   # bun install [package-name] // (npm) : npm install [package-name]
+  # bun create expo my-app

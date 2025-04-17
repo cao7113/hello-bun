@@ -1,0 +1,9 @@
+# https://taskfile.dev/usage/
+version: "3"
+tasks:
+  hello: bun hello.ts
+  
+  gen-hello-js: |
+    rm -fr hello.js
+    bun run --bun tsc hello.ts
+
