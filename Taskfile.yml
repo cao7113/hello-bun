@@ -24,8 +24,16 @@ tasks:
   # bun install -d @types/react @types/react-dom
   # bun build ./index.html --minify --outdir=dist
   mk-hello-comp: |
-    bun create react src/MyComponent.tsx
-    
+
+    # $ bun create react src/MyComponent.tsx
+    # The "react" template has been deprecated.
+    # It is recommended to use "react-app" or "vite" instead.
+    # To create a project using Create React App, run
+    #   bun create react-app
+    # To create a React project using Vite, run
+    #   bun create vite
+    # Then select "React" from the list of frameworks.
+
     # $ bun create ./MyComponent.tsx
     # error: "./MyComponent.tsx" was not found on GitHub. Here are templates you can use:
     # bun create apollo-server MyComponent.tsx
