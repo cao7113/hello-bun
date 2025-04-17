@@ -17,16 +17,18 @@ tasks:
   # bun --print process.env
   # bun -e "console.log(process.env)"
   
-  build-hello-cli: |
-    bun build ./run/hello-cli.ts --compile --outfile build/hello-cli
-    # run by: build/hello-cli
-  
   ## Html & Jsx
   # bun --only-missing install tailwindcss bun-plugin-tailwind
   # bun install --dev bun-plugin-tailwind
   # bun install react react-dom
   # bun install -d @types/react @types/react-dom
   # bun build ./index.html --minify --outdir=dist
+  mk-hello-comp: |
+    bun create src/hello-component.tsx
+  
+  build-hello-cli: |
+    bun build ./run/hello-cli.ts --compile --outfile build/hello-cli
+    # run by: build/hello-cli
 
   ## run scripts
   # bun index.ts
