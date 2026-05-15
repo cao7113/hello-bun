@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { default as Component } from "./hello";
+import { default as Component } from "./hello-comp";
 import { StrictMode } from "react";
 // Optionally: import your app's CSS
 // import "./styles.css";
